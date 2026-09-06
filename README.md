@@ -1,2 +1,3 @@
 # inventory
-The Odin Project assigment 
+
+The Odin Project assigment
