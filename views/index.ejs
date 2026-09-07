@@ -3,5 +3,12 @@
   <%- include('./partials/head') %>
   <body>
     <h1><%= titleh1 %></h1>
+    <main class="categories-container">
+      <% for (const category of categories) { %>
+      <div class="category-card">
+        <%= category.name %>
+      </div>
+      <% } %>
+    </main>
   </body>
 </html>

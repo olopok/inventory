@@ -4,7 +4,7 @@ const app = express();
 const dotenv = require("dotenv");
 dotenv.config();
 
-const inventory = require("./src/routes/index");
+const inventory = require("./src/routes/invroutes");
 const path = require("node:path");
 const assetsPath = path.join(__dirname, "public");
 const PORT = process.env.PORT || 3000;
