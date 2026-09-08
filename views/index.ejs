@@ -2,23 +2,15 @@
 <html lang="en">
   <%- include('./partials/head') %>
   <body>
-    <header class="container">
-      <h1><%= titleh1 %></h1>
-    </header>
+    <%- include('./partials/title') %>
     <main class="main-container">
-      <div class="categories-card">
-        <button type="button">Categories</button>
-      </div>
-      <div class="products-card">
-        <button type="button">Products</button>
-      </div>
+      <form action="/categories" method="get" class="categories-card">
+        <button type="submit">Shows Categories</button>
+      </form>
+      <form action="/products" method="get" class="products-card">
+        <button type="button">Shows Products</button>
+      </form>
+      
     </main>
-    <!-- <main class="categories-container">
-      <% for (const category of categories) { %>
-      <div class="category-card">
-        <%= category.name %>
-      </div>
-      <% } %>
-    </main> -->
   </body>
 </html>
