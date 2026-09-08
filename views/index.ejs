@@ -2,13 +2,23 @@
 <html lang="en">
   <%- include('./partials/head') %>
   <body>
-    <h1><%= titleh1 %></h1>
-    <main class="categories-container">
+    <header class="container">
+      <h1><%= titleh1 %></h1>
+    </header>
+    <main class="main-container">
+      <div class="categories-card">
+        <button type="button">Categories</button>
+      </div>
+      <div class="products-card">
+        <button type="button">Products</button>
+      </div>
+    </main>
+    <!-- <main class="categories-container">
       <% for (const category of categories) { %>
       <div class="category-card">
         <%= category.name %>
       </div>
       <% } %>
-    </main>
+    </main> -->
   </body>
 </html>
