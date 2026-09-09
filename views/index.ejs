@@ -8,9 +8,18 @@
         <button type="submit">Shows Categories</button>
       </form>
       <form action="/products" method="get" class="products-card">
-        <button type="button">Shows Products</button>
+        <button type="submit">Shows Products</button>
       </form>
-      
     </main>
+    <section class="list-container">
+      <% categories.forEach(element => {%>
+      <form action="/category/items" method="get" class="category-list-card">
+        <button type="submit">
+          <strong><%= element.name %>: </strong>
+          <%= element.items_quantity %> Items
+        </button>
+      </form>
+      <% }); %>
+    </section>
   </body>
 </html>

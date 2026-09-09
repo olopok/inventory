@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS products (
 );
 
 INSERT INTO categories (name) VALUES
-  ('paints'), ('tools'), ('fillers');
+  ('PAINTS'), ('TOOLS'), ('FILLERS');
 
 INSERT INTO products (name, quantity, category_id) VALUES
   ('Vinyl paint', 5, 1),

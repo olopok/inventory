@@ -3,6 +3,7 @@ const routesController = require("../controllers/invcontroller");
 
 const inventoryRouter = Router();
 
-inventoryRouter.get("/", routesController.getCategories);
+inventoryRouter.get("/", routesController.homeRender);
+inventoryRouter.get("/categories", routesController.getCategories);
 
 module.exports = inventoryRouter;

@@ -81,7 +81,7 @@ table {
   border-spacing: 0;
 }
 
-.container{
+.container {
   display: flex;
   justify-content: center;
   color: brown;
@@ -96,9 +96,26 @@ table {
   padding: 1em;
 }
 
-.categories-card, .products-card {
+.categories-card,
+.products-card {
   border: 1px solid;
   border-radius: 20%;
   padding: 1em;
+  font-size: 1.5rem;
+}
+
+.list-container {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  border: 1px solid red;
+}
+
+.category-list-card {
+  width: max-content;
+  border: 1px solid;
+  border-radius: 15%;
+  margin: 2rem 0 2rem 0;
+  padding: 0.5em;
   font-size: 1.5rem;
 }
