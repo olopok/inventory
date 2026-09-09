@@ -10,4 +10,9 @@ async function getCategories(req, res) {
   res.render("index", { titleh1: "Shop Inventory", categories: categories });
 }
 
-module.exports = { homeRender, getCategories };
+async function getCategoryItems(req, res) {
+  const { id } = req.params;
+  const categoryItems = await db.getAllCategoryItems(id);
+  console.log("items", categoryItems);
+}
+module.exports = { homeRender, getCategories, getCategoryItems };

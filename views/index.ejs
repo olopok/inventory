@@ -13,7 +13,7 @@
     </main>
     <section class="list-container">
       <% categories.forEach(element => {%>
-      <form action="/category/items" method="get" class="category-list-card">
+      <form action="/category/<%= element.id %>" method="get" class="category-list-card">
         <button type="submit">
           <strong><%= element.name %>: </strong>
           <%= element.items_quantity %> Items
