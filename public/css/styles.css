@@ -81,11 +81,11 @@ table {
   border-spacing: 0;
 }
 
-.container {
+.pageTitle {
   display: flex;
   justify-content: center;
   color: brown;
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 .main-container {

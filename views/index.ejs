@@ -2,24 +2,43 @@
 <html lang="en">
   <%- include('./partials/head') %>
   <body>
-    <%- include('./partials/title') %>
+    <h1 class="pageTitle">Shop Inventory</h1>
     <main class="main-container">
       <form action="/categories" method="get" class="categories-card">
-        <button type="submit">Shows Categories</button>
+        <button type="submit"><strong>Shows Categories</strong></button>
       </form>
       <form action="/products" method="get" class="products-card">
-        <button type="submit">Shows Products</button>
+        <button type="submit"><strong>Shows Products</strong></button>
       </form>
     </main>
     <section class="list-container">
       <% categories.forEach(element => {%>
-      <form action="/category/<%= element.id %>" method="get" class="category-list-card">
+      <form
+        action="/category/<%= element.id %>"
+        method="get"
+        class="category-list-card"
+      >
         <button type="submit">
           <strong><%= element.name %>: </strong>
-          <%= element.items_quantity %> Items
+          <%= element.items_quantity %>
+          Items
         </button>
       </form>
       <% }); %>
     </section>
+    <% if(items && items.length > 0) {%>
+    <table>
+      <tr>
+        <th>ITEM</th>
+        <th>QUANTITY</th>
+      </tr>
+      <% items.forEach(item => { %>
+      <tr>
+        <td><%= item.name %></td>
+        <td><%= item.quantity %></td>
+      </tr>
+      <% }) %>
+    </table>
+    <% } %>
   </body>
 </html>
