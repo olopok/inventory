@@ -104,6 +104,12 @@ a {
   font-size: 1.5rem;
 }
 
+.categories-list-title,
+.products-list-title {
+  width: 100%;
+  text-align: center;
+}
+
 .list-container {
   display: flex;
   justify-content: space-evenly;
@@ -120,24 +126,25 @@ a {
   font-size: 1.5rem;
 }
 
-.items-list-container{
+.items-list-container {
   width: 80vw;
   margin: 0 auto;
 }
 
-th, td {
+th,
+td {
   border: 1px solid black;
   border-radius: 8px;
 }
 
-td{
+td {
   padding-left: 1em;
 }
 
 tr:nth-child(even) {
-  background-color: #D6EEEE;
+  background-color: #d6eeee;
 }
 
-.quantity{
+.quantity {
   text-align: center;
 }

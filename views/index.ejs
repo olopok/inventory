@@ -11,6 +11,8 @@
         <button type="submit"><strong>Shows Products</strong></button>
       </form>
     </main>
+    <% if (categories&&categories.length>0){ %>
+    <h3 class="categories-list-title"><strong>Categories List</strong></h3>
     <section class="list-container">
       <% categories.forEach(element => {%>
       <form
@@ -26,7 +28,9 @@
       </form>
       <% }); %>
     </section>
+    <%}%>
     <% if(items && items.length > 0) {%>
+      <h3 class="products-list-title">Products List</h3>
     <table class="items-list-container">
       <tr>
         <th>ITEM</th>
