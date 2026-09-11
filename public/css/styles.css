@@ -76,10 +76,10 @@ a {
   text-decoration: none;
 }
 
-table {
+/* table {
   border-collapse: collapse;
   border-spacing: 0;
-}
+} */
 
 .pageTitle {
   display: flex;
@@ -99,7 +99,7 @@ table {
 .categories-card,
 .products-card {
   border: 1px solid;
-  border-radius: 20%;
+  border-radius: 8px;
   padding: 1em;
   font-size: 1.5rem;
 }
@@ -114,8 +114,30 @@ table {
 .category-list-card {
   width: max-content;
   border: 1px solid;
-  border-radius: 15%;
+  border-radius: 8px;
   margin: 2rem 0 2rem 0;
   padding: 0.5em;
   font-size: 1.5rem;
+}
+
+.items-list-container{
+  width: 80vw;
+  margin: 0 auto;
+}
+
+th, td {
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+td{
+  padding-left: 1em;
+}
+
+tr:nth-child(even) {
+  background-color: #D6EEEE;
+}
+
+.quantity{
+  text-align: center;
 }
