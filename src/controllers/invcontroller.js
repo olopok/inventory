@@ -16,4 +16,13 @@ async function getCategoryItems(req, res) {
   const categories = await db.getAllCategories();
   res.render("index", { items: categoryItems, categories: categories });
 }
-module.exports = { homeRender, getCategories, getCategoryItems };
+
+function editDataRender(req, res) {
+  res.render("editdata");
+}
+module.exports = {
+  homeRender,
+  getCategories,
+  getCategoryItems,
+  editDataRender,
+};
