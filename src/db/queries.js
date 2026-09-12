@@ -20,4 +20,13 @@ async function getAllProducts() {
   return rows;
 }
 
-module.exports = { getAllCategories, getAllCategoryItems, getAllProducts };
+async function getInventory() {
+  const [categories, products] = await Promise.all([
+    getAllCategories(),
+    getAllProducts(),
+  ]);
+
+  return { categories, products };
+}
+
+module.exports = { getAllCategories, getAllCategoryItems, getAllProducts, getInventory };

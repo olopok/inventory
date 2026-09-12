@@ -26,13 +26,24 @@ async function getProducts(req, res) {
   res.render("index", { products: products, categories: [], items: [] });
 }
 
-function editDataRender(req, res) {
-  res.render("editdata");
+// function editDataRender(req, res) {
+//   res.render("editdata");
+// }
+
+async function getInventory(req, res) {
+  const { categories, products } = await db.getInventory();
+
+  res.render("editdata", {
+    categories,
+    products,
+    // items: [],
+  });
 }
 module.exports = {
   homeRender,
   getCategories,
   getCategoryItems,
-  editDataRender,
+  // editDataRender,
   getProducts,
+  getInventory,
 };

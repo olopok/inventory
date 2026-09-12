@@ -1,0 +1,19 @@
+main {
+  width: 100%;
+  display: flex;
+  border: 1px solid black;
+  padding: 1em;
+  font-size: larger;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.left {
+  width: 30vw;
+  border: 1px solid;
+}
+
+.center {
+  width: 50vw;
+  border: 1px solid red;
+}

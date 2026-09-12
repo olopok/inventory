@@ -4,4 +4,41 @@
 </html>
 <body>
   <h1 class="pageTitle">Shop Inventory</h1>
+  <main>
+    <aside class="left">
+      <span>Categories</span>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>CATEGORY NAME</th>
+        </tr>
+        <% categories.forEach(category => { %>
+        <tr>
+          <td><%= category.id %></td>
+          <td><%= category.name %></td>
+        </tr>
+        <% }) %>
+      </table>
+    </aside>
+    <section class="center">
+      <span>Products</span>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>PRODUCT NAME</th>
+          <th>QUANTITY</th>
+          <th>CATEGORY_ID</th>
+        </tr>
+        <% products.forEach(product => { %>
+          <tr>
+            <td><%= product.id %></td>
+            <td><%= product.name %></td>
+            <td><%= product.quantity %></td>
+            <td><%= product.category_id %></td>
+          </tr>
+        <% }) %>
+      </table>
+    </section>
+    <menu></menu>
+  </main>
 </body>
