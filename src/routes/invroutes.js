@@ -7,5 +7,6 @@ inventoryRouter.get("/", routesController.homeRender);
 inventoryRouter.get("/categories", routesController.getCategories);
 inventoryRouter.get("/category/:id", routesController.getCategoryItems);
 inventoryRouter.get("/editdata", routesController.editDataRender);
+inventoryRouter.get("/products", routesController.getProducts);
 
 module.exports = inventoryRouter;

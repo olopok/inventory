@@ -9,9 +9,15 @@ async function getAllCategories() {
 
 async function getAllCategoryItems(id) {
   const { rows } = await pool.query(
-    "SELECT * FROM products WHERE category_id = $1", [id],
+    "SELECT * FROM products WHERE category_id = $1",
+    [id],
   );
   return rows;
 }
 
-module.exports = { getAllCategories, getAllCategoryItems };
+async function getAllProducts() {
+  const { rows } = await pool.query("SELECT * FROM products");
+  return rows;
+}
+
+module.exports = { getAllCategories, getAllCategoryItems, getAllProducts };

@@ -127,7 +127,7 @@ a {
   font-size: 1.5rem;
 }
 
-.items-list-container {
+.items-list-container, .products-list-container {
   width: 80vw;
   margin: 0 auto;
 }

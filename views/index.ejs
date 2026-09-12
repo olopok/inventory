@@ -33,7 +33,7 @@
     </section>
     <%}%>
     <% if(items && items.length > 0) {%>
-    <h3 class="products-list-title">Products List</h3>
+    <h3 class="products-list-title">Items List</h3>
     <table class="items-list-container">
       <tr>
         <th>ITEM</th>
@@ -43,6 +43,25 @@
       <tr>
         <td><%= item.name %></td>
         <td class="quantity"><%= item.quantity %></td>
+      </tr>
+      <% }) %>
+    </table>
+    <% } %>
+    <% if(products && products.length > 0) {%>
+    <h3 class="products-list-title">Products List</h3>
+    <table class="products-list-container">
+      <tr>
+        <th>ID</th>
+        <th>PRODUCT</th>
+        <th>QUANTITY</th>
+        <th>CATEGORY ID</th>
+      </tr>
+      <% products.forEach(product => { %>
+      <tr>
+        <td><%= product.id %></td>
+        <td><%= product.name %></td>
+        <td class="quantity"><%= product.quantity %></td>
+        <td><%= product.category_id %></td>
       </tr>
       <% }) %>
     </table>
