@@ -20,13 +20,28 @@ async function getAllProducts() {
   return rows;
 }
 
+async function getInventoryCategories() {
+  const { rows } = await pool.query("SELECT * FROM categories");
+  return rows;
+}
+
 async function getInventory() {
   const [categories, products] = await Promise.all([
-    getAllCategories(),
+    getInventoryCategories(),
     getAllProducts(),
   ]);
 
   return { categories, products };
 }
 
-module.exports = { getAllCategories, getAllCategoryItems, getAllProducts, getInventory };
+async function insertCategory(name) {
+  await pool.query("INSERT INTO categories (name) VALUES (UPPER($1))", [name]);
+}
+
+module.exports = {
+  getAllCategories,
+  getAllCategoryItems,
+  getAllProducts,
+  getInventory,
+  insertCategory,
+};

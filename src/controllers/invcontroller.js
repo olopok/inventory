@@ -26,10 +26,6 @@ async function getProducts(req, res) {
   res.render("index", { products: products, categories: [], items: [] });
 }
 
-// function editDataRender(req, res) {
-//   res.render("editdata");
-// }
-
 async function getInventory(req, res) {
   const { categories, products } = await db.getInventory();
 
@@ -39,11 +35,19 @@ async function getInventory(req, res) {
     // items: [],
   });
 }
+
+async function createCategoryPost(req, res) {
+  const { addcat } = req.body;
+  console.log("The body:", req.body);
+  await db.insertCategory(addcat);
+  res.redirect("editdata", );
+}
+
 module.exports = {
   homeRender,
   getCategories,
   getCategoryItems,
-  // editDataRender,
   getProducts,
   getInventory,
+  createCategoryPost,
 };

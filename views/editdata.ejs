@@ -6,7 +6,7 @@
   <h1 class="pageTitle">Shop Inventory</h1>
   <main>
     <aside class="left">
-      <span>Categories</span>
+      <span><strong>Categories</strong></span>
       <table>
         <tr>
           <th>ID</th>
@@ -19,9 +19,27 @@
         </tr>
         <% }) %>
       </table>
+      <button
+        type="button"
+        class="btn"
+        command="show-modal"
+        commandfor="cat-dialog"
+      >
+        ADD
+      </button>
+      <dialog id="cat-dialog" closedby="any">
+        <form action="/editdata" method="post">
+          <label for="addcat">Category Name</label>
+          <input type="text" name="addcat" id="addcat" />
+          <button type="submit" class="btn">Save</button>
+        </form>
+        <button type="button" commandfor="cat-dialog" command="close" class="btn">
+          Cancel
+        </button>
+      </dialog>
     </aside>
     <section class="center">
-      <span>Products</span>
+      <span><strong>Products</strong></span>
       <table>
         <tr>
           <th>ID</th>
@@ -30,14 +48,15 @@
           <th>CATEGORY_ID</th>
         </tr>
         <% products.forEach(product => { %>
-          <tr>
-            <td><%= product.id %></td>
-            <td><%= product.name %></td>
-            <td><%= product.quantity %></td>
-            <td><%= product.category_id %></td>
-          </tr>
+        <tr>
+          <td><%= product.id %></td>
+          <td><%= product.name %></td>
+          <td><%= product.quantity %></td>
+          <td><%= product.category_id %></td>
+        </tr>
         <% }) %>
       </table>
+      <button type="button" class="btn">ADD</button>
     </section>
     <menu></menu>
   </main>
