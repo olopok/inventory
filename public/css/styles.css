@@ -113,6 +113,7 @@ a {
 
 .list-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   text-align: center;
   border: 1px solid red;
@@ -139,7 +140,8 @@ td {
 }
 
 td {
-  padding-left: 1em;
+  /* padding-left: 1em; */
+  text-align: center;
 }
 
 tr:nth-child(even) {

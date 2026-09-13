@@ -38,9 +38,8 @@ async function getInventory(req, res) {
 
 async function createCategoryPost(req, res) {
   const { addcat } = req.body;
-  console.log("The body:", req.body);
   await db.insertCategory(addcat);
-  res.redirect("editdata", );
+  res.redirect("editdata");
 }
 
 module.exports = {

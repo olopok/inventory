@@ -4,7 +4,7 @@ main {
   border: 1px solid black;
   padding: 1em;
   font-size: larger;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .left {
@@ -18,11 +18,26 @@ main {
   border: 1px solid red;
 }
 
-table{
+table {
   margin: 0 auto;
+
 }
 
-.btn{
+.edit {
+  padding: 0;
+  border: none;
+  background: none;
+  align-items: center;
+}
+
+.inside-form {
+  display: flex;
+  gap: 3px;
+  /* justify-items: last baseline; */
+  /* align-items: center; */
+}
+
+.btn {
   border: 1px solid;
   border-radius: 8px;
   padding: 0.25rem 0.5rem;

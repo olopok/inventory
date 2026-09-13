@@ -8,16 +8,34 @@
     <aside class="left">
       <span><strong>Categories</strong></span>
       <table>
-        <tr>
-          <th>ID</th>
-          <th>CATEGORY NAME</th>
-        </tr>
-        <% categories.forEach(category => { %>
-        <tr>
-          <td><%= category.id %></td>
-          <td><%= category.name %></td>
-        </tr>
-        <% }) %>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>CATEGORY NAME</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% categories.forEach(category => { %>
+          <tr>
+            <td><%= category.id %></td>
+            <td><%= category.name %></td>
+            <td class="edit">
+              <div class="inside-form">
+                <form action="/edit/<%= category.id %>" method="post">
+                  <button type="submit">
+                    <img src="/static/square-pen.png" alt="edit" />
+                  </button>
+                </form>
+                <form action="/delete/<%= category.id %>" method="post">
+                  <button type="submit">
+                    <img src="/static/trash.png" alt="delete" />
+                  </button>
+                </form>
+              </div>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
       </table>
       <button
         type="button"
@@ -33,7 +51,12 @@
           <input type="text" name="addcat" id="addcat" />
           <button type="submit" class="btn">Save</button>
         </form>
-        <button type="button" commandfor="cat-dialog" command="close" class="btn">
+        <button
+          type="button"
+          commandfor="cat-dialog"
+          command="close"
+          class="btn"
+        >
           Cancel
         </button>
       </dialog>
@@ -41,20 +64,24 @@
     <section class="center">
       <span><strong>Products</strong></span>
       <table>
-        <tr>
-          <th>ID</th>
-          <th>PRODUCT NAME</th>
-          <th>QUANTITY</th>
-          <th>CATEGORY_ID</th>
-        </tr>
-        <% products.forEach(product => { %>
-        <tr>
-          <td><%= product.id %></td>
-          <td><%= product.name %></td>
-          <td><%= product.quantity %></td>
-          <td><%= product.category_id %></td>
-        </tr>
-        <% }) %>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>PRODUCT NAME</th>
+            <th>QUANTITY</th>
+            <th>CATEGORY_ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% products.forEach(product => { %>
+          <tr>
+            <td><%= product.id %></td>
+            <td><%= product.name %></td>
+            <td><%= product.quantity %></td>
+            <td><%= product.category_id %></td>
+          </tr>
+          <% }) %>
+        </tbody>
       </table>
       <button type="button" class="btn">ADD</button>
     </section>
