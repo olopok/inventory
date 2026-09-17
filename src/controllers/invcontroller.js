@@ -49,6 +49,12 @@ async function editCategoryPost(req, res) {
   res.redirect("/editdata");
 }
 
+async function deleteCategoryPost(req, res) {
+  const { id } = req.params;
+  await db.deleteCategory(id);
+  res.redirect("/editdata");
+}
+
 module.exports = {
   homeRender,
   getCategories,
@@ -57,4 +63,5 @@ module.exports = {
   getInventory,
   createCategoryPost,
   editCategoryPost,
+  deleteCategoryPost,
 };
