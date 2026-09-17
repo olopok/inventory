@@ -45,10 +45,10 @@ async function createCategoryPost(req, res) {
 async function editCategoryPost(req, res) {
   const { id } = req.params;
   const { editcat } = req.body;
-  const check = await db.editCategory(id);
-  if (check) {
-    return res.status(400).json({ error: "The category can not be edited" });
-  }
+  // const check = await db.editCategory(id);
+  // if (check) {
+  //   return res.status(400).json({ error: "The category can not be edited" });
+  // }
 
   await db.editCategory(id, editcat);
   res.redirect("/editdata");
@@ -63,6 +63,12 @@ async function deleteCategoryPost(req, res) {
   res.redirect("/editdata");
 }
 
+async function newProduct(req, res) {
+  const { addproduct, quantity, productCategoryId } = req.body;
+  await db.insertNewProduct(addproduct, quantity, productCategoryId);
+  res.redirect("/editdata");
+}
+
 module.exports = {
   homeRender,
   getCategories,
@@ -72,4 +78,5 @@ module.exports = {
   createCategoryPost,
   editCategoryPost,
   deleteCategoryPost,
+  newProduct,
 };

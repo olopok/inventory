@@ -10,7 +10,8 @@ inventoryRouter.get("/products", routesController.getProducts);
 inventoryRouter.get("/editdata", routesController.getInventory);
 
 inventoryRouter.post("/editdata", routesController.createCategoryPost);
+inventoryRouter.post("/editdata/products", routesController.newProduct);
 inventoryRouter.post("/editdata/:id", routesController.editCategoryPost);
-inventoryRouter.post('/delete/:id', routesController.deleteCategoryPost)
+inventoryRouter.post("/delete/:id", routesController.deleteCategoryPost);
 
 module.exports = inventoryRouter;

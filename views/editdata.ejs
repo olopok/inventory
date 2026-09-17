@@ -110,9 +110,19 @@
         ADD
       </button>
       <dialog id="product-dialog" closedby="any">
-        <form action="/editdata" method="post">
-          <label for="addcat">Category Name</label>
-          <input type="text" name="addcat" id="addcat" />
+        <form action="/editdata/products" method="post">
+          <label for="addproduct">Product Name</label>
+          <input type="text" name="addproduct" id="addproduct" />
+          <label for="quantity">Quantity</label>
+          <input type="text" name="quantity" id="quantity" />
+          <label for="productCategoryId">Category</label>
+          <select name="productCategoryId" id="productCategoryId" required>
+            <% categories.forEach(category => { %>
+            <option value="<%= category.id %>">
+              <%= category.name %>
+            </option>
+            <% }) %>
+          </select>
           <button type="submit" class="btn">Save</button>
         </form>
         <button
