@@ -38,10 +38,15 @@ async function insertCategory(name) {
   await pool.query("INSERT INTO categories (name) VALUES (UPPER($1))", [name]);
 }
 
+async function editCategory(id, name) {
+  await pool.query("UPDATE categories SET name = UPPER($2) WHERE id = $1", [id, name]);
+}
+
 module.exports = {
   getAllCategories,
   getAllCategoryItems,
   getAllProducts,
   getInventory,
   insertCategory,
+  editCategory,
 };

@@ -4,7 +4,7 @@ main {
   border: 1px solid black;
   padding: 1em;
   font-size: larger;
-  /* text-align: center; */
+  text-align: center;
 }
 
 .left {
@@ -27,14 +27,12 @@ table {
   padding: 0;
   border: none;
   background: none;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .inside-form {
   display: flex;
   gap: 3px;
-  /* justify-items: last baseline; */
-  /* align-items: center; */
 }
 
 .btn {

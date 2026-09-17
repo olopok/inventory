@@ -21,11 +21,27 @@
             <td><%= category.name %></td>
             <td class="edit">
               <div class="inside-form">
-                <form action="/edit/<%= category.id %>" method="post">
-                  <button type="submit">
-                    <img src="/static/square-pen.png" alt="edit" />
+                <button
+                  command="show-modal"
+                  commandfor="edit-dialog-<%= category.id %>"
+                >
+                  <img src="/static/square-pen.png" alt="edit" />
+                </button>
+                <dialog id="edit-dialog-<%= category.id %>" closedby="any">
+                  <form action="/editdata/<%= category.id %>" method="post">
+                    <label for="editcat">New Category Name:</label>
+                    <input type="text" name="editcat" id="editcat" required />
+                    <button type="submit" class="btn">Save</button>
+                  </form>
+                  <button
+                    type="button"
+                    commandfor="edit-dialog-<%= category.id %>"
+                    command="close"
+                    class="btn"
+                  >
+                    Cancel
                   </button>
-                </form>
+                </dialog>
                 <form action="/delete/<%= category.id %>" method="post">
                   <button type="submit">
                     <img src="/static/trash.png" alt="delete" />

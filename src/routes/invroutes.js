@@ -10,5 +10,6 @@ inventoryRouter.get("/products", routesController.getProducts);
 inventoryRouter.get("/editdata", routesController.getInventory);
 
 inventoryRouter.post("/editdata", routesController.createCategoryPost);
+inventoryRouter.post("/editdata/:id", routesController.editCategoryPost);
 
 module.exports = inventoryRouter;
