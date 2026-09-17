@@ -97,6 +97,62 @@
             <td><%= product.name %></td>
             <td><%= product.quantity %></td>
             <td><%= product.category_id %></td>
+            <td>
+              <div class="inside-form">
+                <button
+                  command="show-modal"
+                  commandfor="edit-products-dialog-<%= product.id %>"
+                >
+                  <img src="/static/square-pen.png" alt="edit" />
+                </button>
+                <dialog id="edit-products-dialog-<%= product.id %>" closedby="any">
+                  <form
+                    action="/editdata/products/<%= product.id %>"
+                    method="post"
+                  >
+                    <label for="editproductdialog">New Product Name:</label>
+                    <input
+                      type="text"
+                      name="editproduct"
+                      id="editproductdialog"
+                      value="<%= product.name %>"
+                      required
+                    />
+                    <label for="quantitydialog">Quantity:</label>
+                    <input
+                      type="number"
+                      name="quantitydialog"
+                      id="quantitydialog"
+                      value="<%= product.quantity %>"
+                      required
+                    />
+                    <label for="categoryiddialog">Category:</label>
+                    <select name="categoryiddialog" id="categoryiddialog">
+                      <option value="">--Select one--</option>
+                      <% categories.forEach(category => { %>
+                      <option value="<%= category.id %>">
+                        <%= category.name %>
+                      </option>
+                      <% }) %>
+                    </select>
+                    <button type="submit" class="btn">Save</button>
+                  </form>
+                  <button
+                    type="button"
+                    commandfor="edit-products-dialog-<%= product.id %>"
+                    command="close"
+                    class="btn"
+                  >
+                    Cancel
+                  </button>
+                </dialog>
+                <form action="/delete/products/<%= product.id %>" method="post">
+                  <button type="submit">
+                    <img src="/static/trash.png" alt="delete" />
+                  </button>
+                </form>
+              </div>
+            </td>
           </tr>
           <% }) %>
         </tbody>
@@ -118,9 +174,7 @@
           <label for="productCategoryId">Category</label>
           <select name="productCategoryId" id="productCategoryId" required>
             <% categories.forEach(category => { %>
-            <option value="<%= category.id %>">
-              <%= category.name %>
-            </option>
+            <option value="<%= category.id %>"><%= category.name %></option>
             <% }) %>
           </select>
           <button type="submit" class="btn">Save</button>

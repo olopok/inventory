@@ -56,16 +56,29 @@ async function editCategoryPost(req, res) {
 
 async function deleteCategoryPost(req, res) {
   const { id } = req.params;
-  const check = await db.deleteCategory(id);
-  if (check) {
-    return res.status(400).json({ error: "The category can not be deleted" });
-  }
+  await db.deleteCategory(id);
+  // if (check) {
+  //   return res.status(400).json({ error: "The category can not be deleted" });
+  // }
   res.redirect("/editdata");
 }
 
 async function newProduct(req, res) {
   const { addproduct, quantity, productCategoryId } = req.body;
   await db.insertNewProduct(addproduct, quantity, productCategoryId);
+  res.redirect("/editdata");
+}
+
+async function editProductPost(req, res) {
+  const { id } = req.params;
+  const { editproduct, quantitydialog, categoryiddialog } = req.body;
+  await db.editProduct(editproduct, quantitydialog, categoryiddialog, id);
+  res.redirect("/editdata");
+}
+
+async function deleteProductPost(req, res) {
+  const { id } = req.params;
+  await db.deleteProduct(id);
   res.redirect("/editdata");
 }
 
@@ -79,4 +92,6 @@ module.exports = {
   editCategoryPost,
   deleteCategoryPost,
   newProduct,
+  deleteProductPost,
+  editProductPost,
 };

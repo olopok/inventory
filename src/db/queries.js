@@ -39,15 +39,6 @@ async function insertCategory(name) {
 }
 
 async function editCategory(id, name) {
-  const { rows } = await pool.query(
-    "SELECT name FROM categories WHERE id = $1",
-    [id],
-  );
-
-  if (rows[0]?.name === "UNCATEGORISED") {
-    return true;
-  }
-
   await pool.query("UPDATE categories SET name = UPPER($2) WHERE id = $1", [
     id,
     name,
@@ -55,15 +46,6 @@ async function editCategory(id, name) {
 }
 
 async function deleteCategory(id) {
-  const { rows } = await pool.query(
-    "SELECT name FROM categories WHERE id = $1",
-    [id],
-  );
-
-  if (rows[0]?.name === "UNCATEGORISED") {
-    return true;
-  }
-
   await pool.query("DELETE FROM categories WHERE id = $1", [id]);
 }
 
@@ -72,6 +54,14 @@ async function insertNewProduct(name, quantity, category_id) {
     "INSERT INTO products (name, quantity, category_id) VALUES ($1, $2, $3)",
     [name, quantity, category_id],
   );
+}
+
+async function editProduct(name, quantity, category_id, id) {
+  await pool.query('UPDATE products SET name = $1, quantity = $2, category_id = $3 WHERE id = $4',[name, quantity, category_id, id])
+}
+
+async function deleteProduct(id) {
+  await pool.query("DELETE FROM products WHERE id = $1", [id]);
 }
 
 module.exports = {
@@ -83,4 +73,6 @@ module.exports = {
   editCategory,
   deleteCategory,
   insertNewProduct,
+  deleteProduct,
+  editProduct,
 };
