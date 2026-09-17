@@ -20,6 +20,7 @@
             <td><%= category.id %></td>
             <td><%= category.name %></td>
             <td class="edit">
+              <% if (category.name !== 'UNCATEGORISED') { %>
               <div class="inside-form">
                 <button
                   command="show-modal"
@@ -48,6 +49,7 @@
                   </button>
                 </form>
               </div>
+              <% } %>
             </td>
           </tr>
           <% }) %>
@@ -99,7 +101,29 @@
           <% }) %>
         </tbody>
       </table>
-      <button type="button" class="btn">ADD</button>
+      <button
+        type="button"
+        class="btn"
+        command="show-modal"
+        commandfor="product-dialog"
+      >
+        ADD
+      </button>
+      <dialog id="product-dialog" closedby="any">
+        <form action="/editdata" method="post">
+          <label for="addcat">Category Name</label>
+          <input type="text" name="addcat" id="addcat" />
+          <button type="submit" class="btn">Save</button>
+        </form>
+        <button
+          type="button"
+          commandfor="product-dialog"
+          command="close"
+          class="btn"
+        >
+          Cancel
+        </button>
+      </dialog>
     </section>
     <menu></menu>
   </main>
