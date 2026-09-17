@@ -45,13 +45,21 @@ async function createCategoryPost(req, res) {
 async function editCategoryPost(req, res) {
   const { id } = req.params;
   const { editcat } = req.body;
+  const check = await db.editCategory(id);
+  if (check) {
+    return res.status(400).json({ error: "The category can not be edited" });
+  }
+
   await db.editCategory(id, editcat);
   res.redirect("/editdata");
 }
 
 async function deleteCategoryPost(req, res) {
   const { id } = req.params;
-  await db.deleteCategory(id);
+  const check = await db.deleteCategory(id);
+  if (check) {
+    return res.status(400).json({ error: "The category can not be deleted" });
+  }
   res.redirect("/editdata");
 }
 

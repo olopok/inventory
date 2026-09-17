@@ -1,23 +1,8 @@
 const pool = require("./pool");
 
-// async function getAllCategories() {
-//   const { rows } = await pool.query(
-//     "SELECT c.id, c.name, COUNT(p.id) AS items_quantity FROM categories c LEFT JOIN products p ON p.category_id = c.id GROUP BY c.id, c.name ORDER BY items_quantity DESC",
-//   );
-//   return rows;
-// }
-
 async function getAllCategories() {
   const { rows } = await pool.query(
-    `WITH uncategorised AS (
-       SELECT id FROM categories WHERE LOWER(name) = LOWER('uncategorised') LIMIT 1
-     )
-     SELECT c.id, c.name, COUNT(p.id) AS items_quantity
-     FROM categories c
-     LEFT JOIN products p 
-       ON COALESCE(p.category_id, (SELECT id FROM uncategorised)) = c.id
-     GROUP BY c.id, c.name
-     ORDER BY items_quantity DESC`
+    "SELECT c.id, c.name, COUNT(p.id) AS items_quantity FROM categories c LEFT JOIN products p ON p.category_id = c.id GROUP BY c.id, c.name ORDER BY items_quantity DESC",
   );
   return rows;
 }
@@ -54,6 +39,15 @@ async function insertCategory(name) {
 }
 
 async function editCategory(id, name) {
+  const { rows } = await pool.query(
+    "SELECT name FROM categories WHERE id = $1",
+    [id],
+  );
+
+  if (rows[0]?.name === "UNCATEGORISED") {
+    return true;
+  }
+
   await pool.query("UPDATE categories SET name = UPPER($2) WHERE id = $1", [
     id,
     name,
@@ -61,6 +55,15 @@ async function editCategory(id, name) {
 }
 
 async function deleteCategory(id) {
+  const { rows } = await pool.query(
+    "SELECT name FROM categories WHERE id = $1",
+    [id],
+  );
+
+  if (rows[0]?.name === "UNCATEGORISED") {
+    return true;
+  }
+
   await pool.query("DELETE FROM categories WHERE id = $1", [id]);
 }
 
